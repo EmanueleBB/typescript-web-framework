@@ -1,7 +1,17 @@
 import { User } from "./models/user";
 
 const user = new User({});
-user.set({name:'NewName'});
 
-console.log(user.get('name'));
-console.log(user.get('age'));
+user.on('change',()=>{
+   console.log('change 1')
+});
+user.on('change',()=>{
+   console.log('change 2')
+});
+user.on('save',()=>{
+   console.log('saved stuff ma brotha')
+});
+
+
+user.trigger('dsf')
+
