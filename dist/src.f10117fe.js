@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"src/views/UserForm.ts":[function(require,module,exports) {
+})({"src/views/View.ts":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -135,47 +135,21 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.UserForm = void 0;
-var UserForm = /*#__PURE__*/function () {
-  function UserForm(parent, model) {
-    var _this = this;
-    _classCallCheck(this, UserForm);
+exports.View = void 0;
+var View = /*#__PURE__*/function () {
+  function View(parent, model) {
+    _classCallCheck(this, View);
     this.parent = parent;
     this.model = model;
-    this.onSetNameClick = function () {
-      var input = _this.parent.querySelector('input');
-      if (input) {
-        var name = input.value;
-        _this.model.set({
-          name: name
-        });
-      }
-    };
-    this.onSetAgeClick = function () {
-      _this.model.setRandomAge();
-    };
     this.bindModel();
   }
-  _createClass(UserForm, [{
+  _createClass(View, [{
     key: "bindModel",
     value: function bindModel() {
-      var _this2 = this;
+      var _this = this;
       this.model.on('change', function () {
-        _this2.render();
+        _this.render();
       });
-    }
-  }, {
-    key: "eventsMap",
-    value: function eventsMap() {
-      return {
-        'click:.set-age': this.onSetAgeClick,
-        'click:.set-name': this.onSetNameClick
-      };
-    }
-  }, {
-    key: "template",
-    value: function template() {
-      return "\n         <div>\n            <h1>User Form</h1>\n            <div>User name: ".concat(this.model.get('name'), "</div>\n            <div>User age: ").concat(this.model.get('age'), "</div>\n            <input/>\n            <button class='set-name'>Change Name</button>\n            <button class='set-age'>Set Random Age</button>\n         </div>\n      ");
     }
   }, {
     key: "bindEvents",
@@ -204,18 +178,84 @@ var UserForm = /*#__PURE__*/function () {
       this.parent.append(templateElement.content);
     }
   }]);
-  return UserForm;
+  return View;
 }();
-exports.UserForm = UserForm;
-},{}],"src/models/Model.ts":[function(require,module,exports) {
+exports.View = View;
+},{}],"src/views/UserForm.ts":[function(require,module,exports) {
 "use strict";
 
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.UserForm = void 0;
+var View_1 = require("./View");
+var UserForm = /*#__PURE__*/function (_View_1$View) {
+  _inherits(UserForm, _View_1$View);
+  var _super = _createSuper(UserForm);
+  function UserForm() {
+    var _this;
+    _classCallCheck(this, UserForm);
+    _this = _super.apply(this, arguments);
+    _this.onSetNameClick = function () {
+      var input = _this.parent.querySelector('input');
+      if (input) {
+        var name = input.value;
+        _this.model.set({
+          name: name
+        });
+      }
+    };
+    _this.onSetAgeClick = function () {
+      _this.model.setRandomAge();
+    };
+    return _this;
+  }
+  _createClass(UserForm, [{
+    key: "eventsMap",
+    value: function eventsMap() {
+      return {
+        'click:.set-age': this.onSetAgeClick,
+        'click:.set-name': this.onSetNameClick
+      };
+    }
+  }, {
+    key: "template",
+    value: function template() {
+      return "\n         <div>\n            <h1>User Form</h1>\n            <div>User name: ".concat(this.model.get('name'), "</div>\n            <div>User age: ").concat(this.model.get('age'), "</div>\n            <input/>\n            <button class='set-name'>Change Name</button>\n            <button class='set-age'>Set Random Age</button>\n         </div>\n      ");
+    }
+  }]);
+  return UserForm;
+}(View_1.View);
+exports.UserForm = UserForm;
+},{"./View":"src/views/View.ts"}],"src/models/Model.ts":[function(require,module,exports) {
+"use strict";
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Model = void 0;
-var Model = /** @class */function () {
+var Model = /*#__PURE__*/function () {
   function Model(attributes, events, sync) {
+    _classCallCheck(this, Model);
     this.attributes = attributes;
     this.events = events;
     this.sync = sync;
@@ -223,28 +263,35 @@ var Model = /** @class */function () {
     this.trigger = this.events.trigger;
     this.get = this.attributes.get;
   }
-  Model.prototype.set = function (update) {
-    this.attributes.set(update);
-    this.events.trigger('change');
-  };
-  Model.prototype.fetch = function () {
-    var _this = this;
-    var id = this.attributes.get('id');
-    if (typeof id !== 'number') {
-      throw new Error('cannot fetch without an id');
+  _createClass(Model, [{
+    key: "set",
+    value: function set(update) {
+      this.attributes.set(update);
+      this.events.trigger('change');
     }
-    this.sync.fetch(id).then(function (response) {
-      _this.set(response.data);
-    });
-  };
-  Model.prototype.save = function () {
-    var _this = this;
-    this.sync.save(this.attributes.getAll()).then(function (response) {
-      _this.trigger('save');
-    }).catch(function () {
-      _this.trigger('error');
-    });
-  };
+  }, {
+    key: "fetch",
+    value: function fetch() {
+      var _this = this;
+      var id = this.attributes.get('id');
+      if (typeof id !== 'number') {
+        throw new Error('cannot fetch without an id');
+      }
+      this.sync.fetch(id).then(function (response) {
+        _this.set(response.data);
+      });
+    }
+  }, {
+    key: "save",
+    value: function save() {
+      var _this2 = this;
+      this.sync.save(this.attributes.getAll()).then(function (response) {
+        _this2.trigger('save');
+      }).catch(function () {
+        _this2.trigger('error');
+      });
+    }
+  }]);
   return Model;
 }();
 exports.Model = Model;
@@ -5776,7 +5823,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50047" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53263" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
