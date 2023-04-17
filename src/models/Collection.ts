@@ -9,7 +9,7 @@ export class Collection<T,K> {
    constructor(
       public rootUrl:string,
       public deserialize:(json:K)=>T
-      ){}
+   ){}
    
    get on(){
       return this.events.on;
